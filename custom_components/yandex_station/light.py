@@ -86,7 +86,11 @@ class YandexLight(LightEntity, YandexEntity):
                 self._attr_hs_color = color_temperature_to_hs(value)
             else:
                 self._attr_hs_color = None
-            self._attr_effect = item["name"]
+            self._attr_effect = (
+                item["name"]
+                if "name" in item
+                else next(i["name"] for i in self.effects if i["id"] == item["id"])
+            )
 
     async def async_turn_on(
         self,
