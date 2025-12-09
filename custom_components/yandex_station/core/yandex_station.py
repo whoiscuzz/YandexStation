@@ -363,6 +363,7 @@ class YandexStationBase(MediaBrowser, RestoreEntity):
                 "cucumber",
                 "plum",
                 "bergamot",
+                "orion",
             ):
                 raise HomeAssistantError("Поддерживаются только станции с часами")
 
@@ -376,7 +377,7 @@ class YandexStationBase(MediaBrowser, RestoreEntity):
 
         # https://github.com/AlexxIT/YandexStation/issues/697
         if "visualization" in kwargs:
-            if self.device_platform != "yandexstation_2":
+            if self.device_platform not in ("yandexstation_2", "orion"):
                 raise HomeAssistantError("Поддерживаются только станции с экраном")
 
             visualization = led.setdefault(
