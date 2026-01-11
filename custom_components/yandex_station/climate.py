@@ -29,9 +29,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
         if device["type"] in INCLUDE_TYPES
     )
 
-
-# HA: auto, cool, dry, fan_only, heat; heat_cool, off
-# Ya: auto, cool, dry, fan_only, heat; eco, turbo, quiet
 HVAC_MODES = {
     "auto": HVACMode.AUTO,
     "cool": HVACMode.COOL,
